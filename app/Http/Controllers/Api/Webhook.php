@@ -18,7 +18,7 @@ class Webhook extends Controller
             $no_dev = '';
             if ($env == 'production')
                 $no_dev = '--no-dev';
-            echo shell_exec("cd {$path} && git checkout {$branch} && php artisan migrate && php /usr/local/bin/composer install {$no_dev} 2>&1");
+            echo shell_exec("cd {$path} && git checkout {$branch} && php artisan migrate --force && php /usr/local/bin/composer install {$no_dev} 2>&1");
         }
         exit("done " . date('Y-m-d H:i:s', time()));
     }
